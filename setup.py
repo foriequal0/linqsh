@@ -21,6 +21,7 @@ setup(
           'linqsh=linqsh.main:main',
           # TODO : flag --symlink or something
           'filter=linqsh.main:main',
-          'from_line=linqsh.main:main'
+          'from_stdin=linqsh.main:main'
+          'foreach=linqsh.main:main'
           ]},
     )
