@@ -4,6 +4,7 @@ import argparse
 import linqsh.env as env
 import linqsh.utils.split as split
 
+
 __author__ = 'foriequal0'
 
 
@@ -20,7 +21,9 @@ def cmd_main(args):
     for record in split.iter_stream(sys.stdin):
         fields = split.field_split(record)
 
-        p = subprocess.Popen([env.SHELL, '-c', args.command, record])
+        processArgs = [env.SHELL, '-c', args.command, record]
+
+        p = subprocess.Popen(processArgs + fields)
         if p.returncode == 0:
             print(record)
         else:
