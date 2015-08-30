@@ -1,5 +1,6 @@
 import os
 import sys
+import codecs
 from unicodedata import category
 
 __author__ = 'foriequal0'
@@ -52,10 +53,10 @@ def override_from_args(args):
     env = sys.modules[__name__]
     env.SHELL = args.shell
     env.PWD = args.working_dir
-    env.FS = args.fs
-    env.RS = args.rs
-    env.OFS = args.ofs
-    env.ORS = args.ors
+    env.FS = unescape(args.fs)
+    env.RS = unescape(args.rs)
+    env.OFS = unescape(args.ofs)
+    env.ORS = unescape(args.ors)
     env.JSON = args.json
 
 
@@ -68,3 +69,6 @@ def escape(str):
             escaped.append(c)
     return "'" + ''.join(escaped) + "'"
 
+
+def unescape(str):
+    return codecs.decode(str, "unicode_escape")
