@@ -14,9 +14,9 @@ group	list
 
 ## example
 ```bash
-$ FS='\t'
-$ RS='\n'
-$ cat item_group | tail -n+3 | from_stdin | filter 'grep -e item1 -f $2' | select 'echo $1'
+$ export FS='\t'
+$ export RS='\n'
+$ cat item_group | tail -n+3 | from_stdin | filter x 'grep -e item1 -f $x2' | foreach 'echo $1'
 00001
 00002
 ```

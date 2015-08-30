@@ -12,8 +12,8 @@ COMMAND='filter'
 
 
 def add_arguments(parser: argparse.ArgumentParser):
-    parser.add_argument('command',
-                       help='ex: [ $1 == "asdf" ]')
+    parser.add_argument('variable')
+    parser.add_argument('command')
     pass
 
 
@@ -21,9 +21,15 @@ def cmd_main(args):
     for record in split.iter_stream(sys.stdin):
         fields = split.field_split(record)
 
-        processArgs = [env.SHELL, '-c', args.command, record]
+        processArgs = [env.SHELL, '-c', args.command]
 
-        p = subprocess.Popen(processArgs + fields)
+        varPack = dict([(args.variable, record)])
+
+        for index, val in enumerate(fields):
+            varPack[args.variable+str(index)] = val
+
+        p = subprocess.Popen(processArgs, env=varPack)
+
         if p.returncode == 0:
             print(record)
         else:
