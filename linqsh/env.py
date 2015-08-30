@@ -3,8 +3,6 @@ import sys
 import codecs
 from unicodedata import category
 
-__author__ = 'foriequal0'
-
 
 def import_env_var():
     env = sys.modules[__name__]

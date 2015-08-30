@@ -5,12 +5,6 @@ import linqsh.env as env
 import linqsh.utils.split as split
 
 
-__author__ = 'foriequal0'
-
-
-COMMAND='filter'
-
-
 def add_arguments(parser: argparse.ArgumentParser):
     parser.add_argument('variable')
     parser.add_argument('command')

@@ -1,5 +1,3 @@
-__author__ = 'foriequal0'
-
 # TODO : RS split, json list split, json object k/v split < Do I need this?
 import io
 import re

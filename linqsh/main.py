@@ -8,8 +8,6 @@ import linqsh.utils.split
 from asq.initiators import query
 from asq.selectors import identity
 
-__author__ = 'foriequal0'
-
 
 def add_common_arguments(parser):
     pass
